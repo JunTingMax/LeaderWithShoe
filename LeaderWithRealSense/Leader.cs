@@ -203,25 +203,6 @@ namespace LeaderWithRealSense
 
         private void btn_fileLoad_Click(object sender, EventArgs e)
         {
-            Thread OpenFile = new Thread(openFile);
-            OpenFile.IsBackground = true;
-            OpenFile.Start();
-            //OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            //openFileDialog1.Title = "";
-            //openFileDialog1.Filter = "文字文件 (*.txt)|*.txt|All files (*.*)|*.*";
-            //openFileDialog1.FilterIndex = 1;
-            //openFileDialog1.RestoreDirectory = true;
-
-            //if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            //{
-            //    routeLoad(openFileDialog1.FileName);
-
-            //    picBox_route.Refresh();
-
-            //}
-        }
-        private void openFile()
-        {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             openFileDialog1.Title = "";
             openFileDialog1.Filter = "文字文件 (*.txt)|*.txt|All files (*.*)|*.*";
@@ -231,14 +212,12 @@ namespace LeaderWithRealSense
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 routeLoad(openFileDialog1.FileName);
-                Invoke((Action)(() =>
-                {
-                    picBox_route.Refresh();
-                }));
-                
+
+                picBox_route.Refresh();
 
             }
         }
+
         private void routeLoad(string path)
         {
 
